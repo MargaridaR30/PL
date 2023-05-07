@@ -1,0 +1,14 @@
+A=[16 2 3 13; 5 11 10 8; 9 7 6 12; 4 14 15 1];
+b=[1; 1; 1; -1];
+C = [1 1 1 1; ];
+l = [-inf, -inf];
+u = [5, t];
+
+options = optimoptions('linprog', 'Display', 'off');
+[x, fval, exitflag, output, lambda] = linprog(C, A, b, [], [], l, u, [], options);
+
+if exitflag > 0
+    fprintf('Sistema admissível para t = %f\n', t);
+else
+    fprintf('Sistema inadmissível para t = %f\n', t);
+end
